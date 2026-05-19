@@ -19,12 +19,8 @@ app.get("/", (req, res) => {
 app.use("/api", peliculaRoutes);
 app.use("/api", actorRoutes);
 
-const dbConnected = await connectDB();
+connectDB();
 
-if (dbConnected) {
-  app.listen(PORT, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
-  });
-} else {
-  console.log("No se pudo iniciar el servidor");
-}
+app.listen(PORT, () => {
+  console.log(`Servidor ejecutándose en puerto ${PORT}`);
+});
